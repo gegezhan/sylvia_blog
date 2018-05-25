@@ -41,6 +41,7 @@ function modifyList() {
         let li = `<li><a href=${url}>${index+1}. ${title}</a></li>\n`;
         container.append(li);
     });
+    console.log(list);
 
     fs.writeFile('./index.html', $.html());
 }
