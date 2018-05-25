@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>template</title>
+  <link rel="stylesheet" href="./index.css">
+  <script src="https://cdn.bootcss.com/marked/0.3.17/marked.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div id="content"><h1 id="sass-intellij-idea-webstorm-">Sass 使用及自动编译（intellij idea/webstorm）</h1>
+<p>1.<code>sass</code>基于<code>Ruby</code>语言开发而成，因此安装<code>sass</code>前需要<a href="http://rubyinstaller.org/downloads">安装Ruby</a>。（注:mac下自带Ruby无需在安装Ruby!）</p>
+<p>window下安装SASS首先需要安装<code>Ruby</code>，先从官网<a href="http://rubyinstaller.org/downloads">下载Ruby</a>并安装。安装过程中请注意勾选<code>Add Ruby executables to your PATH</code>添加到系统环境变量。</p>
+<p>安装完成后，运行<code>CMD</code>输入<code>ruby -v</code>，测试是否安装成功，成功则显示版本，如下图：
+<img src="http://upload-images.jianshu.io/upload_images/8879462-c6f4b3c3da66108f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>2.更换<code>gem</code>源为 <a href="https://rubygems.org/">https://rubygems.org/</a>
+<code>//1.删除原gem源  gem sources --remove https://rubygems.org/</code>
+<code>//2.添加国内淘宝源  gem sources -a https://ruby.taobao.org/</code>
+<code>//3.打印是否替换成功  gem sources -l</code>
+<code>//4.更换成功后打印如下  *** CURRENT SOURCES ***  https://ruby.taobao.org/</code></p>
+<p>3.全局安装 <code>sass</code> 和 <code>compass</code> ，执行 <code>gem install sass</code> 和 <code>gem install compass</code>，如下：
+<img src="http://upload-images.jianshu.io/upload_images/8879462-9e2ffefcb5af19c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+<img src="http://upload-images.jianshu.io/upload_images/8879462-eba5b27bb9187a74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>4.确认 <code>sass</code> 和 <code>compass</code>安装成功：命令行输入：<code>sass --version</code>  <code>compass -v</code>验证
+<img src="http://upload-images.jianshu.io/upload_images/8879462-e02c0583631de320.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+<img src="http://upload-images.jianshu.io/upload_images/8879462-0237ca8cead28f8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>5.此处以 intellij idea 为例，使用其自动编译工具。
+1）打开  intellij idea ，File =&gt; settings =&gt; Plugins ， 查看是否有 File Watchers 插件，没有的话，点击下方 Install JetBrains plugins 去安装。
+<img src="http://upload-images.jianshu.io/upload_images/8879462-4aa3ef6ecc915676.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+2）安装成功后，列表显示出此插件。
+<img src="http://upload-images.jianshu.io/upload_images/8879462-d087186cec9ec1d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+3）settings =&gt; Tools =&gt; File Watchers ,点击右侧加号，添加 SCSS ，点击 OK。
+<img src="http://upload-images.jianshu.io/upload_images/8879462-f5307b9a377cb1af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+4）在弹出的 New Watcher =&gt; Watcher Setting =&gt; Program 处指向 Ruby 的安装地址，点击OK，配置完成。
+<img src="http://upload-images.jianshu.io/upload_images/8879462-dc991a2ca200fdd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>6.此时，再新建 scss 文件，会同时新建一个同名的 css 文件 和 map，直接引用 css文件即可。
+<img src="http://upload-images.jianshu.io/upload_images/8879462-3ff1bcbdb702927f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><code>Sass</code>安装参考：<a href="https://www.sass.hk/install/">https://www.sass.hk/install/</a></p>
+</div>
+</div>
+  <script>
+    // let content = document.getElementById('content');
+    // let markdown = content.innerHTML;
+    // let newMarkdown = HTMLDecode(markdown);
+    // let html = marked(newMarkdown);
+    // content.innerHTML = html;
+    //
+    // //特殊字符在获取 innerHTML 时，会被转换为转义字符，影响 Markdown 内容转换，此处反转回来。 &gt对应 >
+    // function HTMLDecode(text) {
+    //   return text.replace(/&gt;/g, '>')
+    // }
+  </script>
+</body>
+</html>
