@@ -6,25 +6,38 @@ const baseUrl = 'https://gegezhan.github.io/sylvia_blog/';
 let list = [];
 
 fs.readdir('./list', function (error, files) {
-    files.forEach( file=>{
-        let p = path.join('./list', file);
-        let markdown = fs.readFileSync(p).toString();
-        let html = marked(markdown);
+    // console.log('files', files);
+    // [...list] = files;
+    // console.log('files', files, list);
+    files.forEach( (file, index) => {
+        let dir_p = path.join('./list', file);
+        // console.log('dir_p', dir_p);
+        fs.readdir(dir_p, function (dir_error, dir_files) {
+            list.push({
+                item: file,
+                children: dir_files
+            });
 
-        let template = fs.readFileSync('./template.html').toString();
-        let result = template.replace('%content%', html);
-        fs.writeFileSync(file+'.html', result);
-    })
+            dir_files.forEach(dir_file=>{
+                let file_p = path.join(dir_p, dir_file);
+                let markdown = fs.readFileSync(file_p).toString();
+                let html = marked(markdown);
+
+                let template = fs.readFileSync('./template.html').toString();
+                let result = template.replace('%content%', html);
+                fs.writeFileSync(dir_file+'.html', result);
+            });
+            if(index === files.length - 1){
+                modifyList()
+            }
+        })
+
+    });
 });
 
-fs.readdir('./', function (error, files) {
-    files.forEach(file=>{
-        if(file.substring(file.length-7, file.length) === 'md.html'){
-            list.push(file);
-        }
-    })
-    modifyList();
-});
+function articleDisplay(e) {
+    console.log('e', e);
+};
 
 function modifyList() {
     let content = fs.readFileSync('./index.html');
@@ -36,12 +49,23 @@ function modifyList() {
     let container = $('.container');
 
     list.forEach((item,index)=>{
-        let url = `${baseUrl}${item}`;
-        let title = item.substring(0, item.length-8);
-        let li = `<li><a href=${url}>${index+1}. ${title}</a></li>\n`;
+        let li =  `<li class='block block-${index}'></li>\n`;
         container.append(li);
+        let liElem =  $(`.container .block-${index}`);
+        let a = `<a class="title">${index+1}. ${item.item}</a>`;
+        liElem.append(a);
+        if(item.children && Array.isArray(item.children)){
+            item.children.forEach(_item=>{
+                let childA = `<a class="article">${_item.substring(0, _item.length-3)}</a>\n`;
+                liElem.append(childA);
+                console.log('childA', childA);
+            })
+        }
     });
-    console.log(list);
 
     fs.writeFile('./index.html', $.html());
 }
+
+
+
+

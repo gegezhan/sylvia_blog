@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hitsuoyue/gegezhan.git"
+    "url": "git+https://github.com/gegezhan/sylvia_blog.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Hitsuoyue/gegezhan/issues"
+    "url": "https://github.com/gegezhan/sylvia_blog/issues"
   },
-  "homepage": "https://github.com/Hitsuoyue/gegezhan#readme",
+  "homepage": "https://github.com/gegezhan/sylvia_blog/index.html",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "marked": "^0.3.17"
