@@ -1,0 +1,23 @@
+{
+  "name": "gegezhan",
+  "version": "1.0.0",
+  "description": "my blog —— gegezhan",
+  "main": "transform.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hitsuoyue/gegezhan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hitsuoyue/gegezhan/issues"
+  },
+  "homepage": "https://github.com/Hitsuoyue/gegezhan#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "marked": "^0.3.17"
+  }
+}

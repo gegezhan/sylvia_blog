@@ -1,0 +1,2 @@
+# gegezhan
+my blog —— gegezhan
